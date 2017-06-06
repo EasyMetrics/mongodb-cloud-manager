@@ -17,7 +17,7 @@ resources:
   name: {{ env["name"] }}-data
   properties:
     zone: {{ properties["zone"] }}
-    sizeGb: 250
+    sizeGb: 160
     type: projects/{{ env["project"] }}/zones/{{ properties["zone"] }}/diskTypes/pd-ssd 
 
 - type: compute.v1.instance
@@ -37,7 +37,8 @@ resources:
       autoDelete: false
       source: $(ref.{{ env["name"] }}-data.selfLink)
     networkInterfaces:
-    - network: global/networks/default
+    # - network: projects/jobtrak-155518/global/networks/jobtrak-gcp-network
+    - subnetwork: regions/us-west1/subnetworks/jobtrak-us-west-1-datatier
       accessConfigs:
       - name: External NAT
         type: ONE_TO_ONE_NAT
