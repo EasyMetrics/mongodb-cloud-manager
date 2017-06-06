@@ -17,7 +17,7 @@ resources:
   name: {{ env["name"] }}-data
   properties:
     zone: {{ properties["zone"] }}
-    sizeGb: 500
+    sizeGb: 250
     type: projects/{{ env["project"] }}/zones/{{ properties["zone"] }}/diskTypes/pd-ssd 
 
 - type: compute.v1.instance
